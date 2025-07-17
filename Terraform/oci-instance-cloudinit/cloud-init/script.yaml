@@ -1,1 +1,24 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+# Instala pacotes necessários
+packages:
+  - nginx
+  - git
+  - curl
+
+runcmd:
+  - echo "<h1>Bem-vindo ao Nginx provisionado via Cloud-Init!</h1>" > /usr/share/nginx/html/index.html
+  
+  # Mensagem personalizada no home do usuário
+  - echo "Olá, essa instância foi provisionada com Terraform e Cloud-Init" > /home/opc/mensagem.txt
+  
+  # Garante que o SSH está funcionando corretamente
+  - systemctl restart sshd
+  
+  # Configura e inicia o Nginx
+  - systemctl enable nginx
+  - systemctl start nginx
 
