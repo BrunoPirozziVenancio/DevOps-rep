@@ -77,5 +77,58 @@ ARQUIVO_LOG="/caminho/do/seu/log.log"  # Local do arquivo de log
 PARTITION="/"  # Partição a monitorar  
 THRESHOLD=80   # % para disparar alerta
 
+### 6. `clean_logs.sh`
+
+**Descrição**: Script para limpeza segura de arquivos de log antigos com **backup opcional**
+
+
+#### Funcionalidades ####
+
+1. **Limpeza inteligente** de logs, temporários e backups antigos
+2. **Backup interativo** com confirmação antes da execução
+3. **Filtro por tempo** (mantém arquivos recentes)
+4. **Relatório detalhado** com contagem de arquivos
+5. **Modo seguro** com confirmações em cada etapa  
+
+**Como Usar**  
+
+`./clean_logs.sh`
+
+**Configurações**:  
+
+`LOG_DIR`  
+
+Diretório principal de onde os arquivos serão removidos.  
+Padrão: "/var/log"
+
+`DAYS_TO_KEEP`  
+
+   Número de dias que os arquivos serão mantidos antes de serem considerados antigos.  
+   Padrão: 30 dias
+
+`LOG_EXTENSIONS`  
+
+   Extensões de arquivos que serão incluídas na limpeza.  
+   Padrão: ("*.log", "*.tmp")
+
+`BACKUP_DIR`  
+
+   Caminho onde os arquivos de log antigos podem ser armazenados como backup.  
+   Padrão: "/backup/logs_*" (criado automaticamente)
+
+
+
+**Configuração personalizada**  
+
+`LOG_DIR="/caminho/logs" DAYS_TO_KEEP=60 ./clean_logs.sh`
+
+**Agendamento automático (via cron)**  
+
+-> Diariamente às 2AM com log de execução 
+
+`0 3 * * * /caminho/clean_logs.sh >> /var/log/clean_logs.log 2>&1`  
+
+
+
 
 
