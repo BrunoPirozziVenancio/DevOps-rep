@@ -35,4 +35,28 @@ access_type      = "NoPublicAccess"
 ```hcl
 terraform init  
 terraform apply  
-```
+```  
+---
+
+## Exemplo real de uso
+
+Esse bucket foi pensado pra armazenar:
+
+- 🔄 Backups automatizados
+- 📄 Logs de aplicação e sistema
+- ⚙️ Arquivos de configuração (.conf, .env etc.)
+
+Exemplo prático com 3 arquivos:
+
+```bash
+oci os object put --bucket-name bruno-backups \
+  --name "backups/backup_17072025.tar.gz" \
+  --file exemplos_upload/backup_17072025.tar.gz
+
+oci os object put --bucket-name bruno-backups \
+  --name "logs/access.log" \
+  --file exemplos_upload/access.log
+
+oci os object put --bucket-name bruno-backups \
+  --name "configs/nginx.conf" \
+  --file exemplos_upload/nginx.conf
