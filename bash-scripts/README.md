@@ -128,6 +128,46 @@ Padrão: "/var/log"
 
 `0 3 * * * /caminho/clean_logs.sh >> /var/log/clean_logs.log 2>&1`  
 
+### 6. `limpa_tmp.sh`
+
+**Descrição**: Remove automaticamente arquivos temporários antigos do diretório `/tmp`
+
+#### Funcionalidades ####
+
+1. Remove arquivos com mais de X dias no `/tmp`
+2. Gera log detalhado em `/var/log/limpeza_tmp.log`
+3. Modo de teste (`--dry-run`) para verificação prévia
+4. Verificação de privilégios de root
+5. Relatório completo da execução
+
+**Como Usar**  
+
+DIRETORIO
+🗂️ Define o caminho do diretório onde a limpeza será executada.
+Valor padrão: "/tmp"
+
+DIAS
+⏳ Número mínimo de dias de inatividade para que um arquivo seja considerado "antigo" e possa ser removido.
+Valor padrão: 2
+
+LOG_FILE
+📝 Caminho para o arquivo onde será registrado o log da execução da limpeza.
+Valor padrão: /var/log/limpeza_tmp.log
+
+-> Execução normal (como root)  
+
+`sudo ./limpa_tmp.sh`  
+
+**Modo de teste (apenas mostra o que seria removido)**  
+
+`sudo ./limpa_tmp.sh --dry-run`
+
+**Configuração personalizada**
+
+-> Alterar dias ou diretório (como variáveis de ambiente)  
+
+`DIAS=7 DIRETORIO="/outro/dir" sudo -E ./limpa_tmp.sh`
+
 
 
 
