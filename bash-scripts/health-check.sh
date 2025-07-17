@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script pra verificar se sites tão respondendo
+# Script pra verificar se sites estão respondendo
 # Feito por: [Bruno Pirozzi Venancio]
 
 LISTA_SITES=(
