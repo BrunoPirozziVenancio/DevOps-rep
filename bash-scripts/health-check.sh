@@ -2,7 +2,6 @@
 
 # Script pra verificar se sites tão respondendo
 # Feito por: [Bruno Pirozzi Venancio]
-# Uso: só rodar e ver a mágica acontecer
 
 LISTA_SITES=(
     "https://google.com"
