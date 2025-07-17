@@ -3,7 +3,7 @@ Coleção de scripts Bash úteis para administração de sistemas
 
 ## Lista de Scripts
 
-1. `backup_com_timestamp.sh`
+1. `Backup_com_timestamp.sh`
    
 **Descrição**: Cria backups compactados com timestamp  
 **Como usar**:
@@ -15,7 +15,7 @@ Edite as variáveis no script:
 - `SOURCE="/caminho/para/backup"` - Diretório a ser backupeado
 - `DEST="/onde/salvar/backups"` - Pasta de destino
 
-2. `verifica_sites_online.sh`
+2. `Verifica_sites_online.sh`
 
 **Descrição**: Verifica status de sites/serviços  
 **Como usar**:
@@ -23,12 +23,26 @@ Edite as variáveis no script:
 `./verifica_sites_online.sh`  
 Personalização:  
 
-**Edite a array SERVICES no script**: 
+-> Edite a array SERVICES no script: 
 
 SERVICES=(  
   "https://seu-site.com"  
   "http://localhost:3000"  
 )
 
+3. `Alerta_uso_disco.sh`
+Descrição: Alerta quando uso do disco ultrapassa limite
+Como usar:
+
+
+`./alerta_uso_disco.sh`  
+
+**Configuração**:  
+
+
+-> Variáveis editáveis:  
+
+PARTITION="/"  # Partição a monitorar  
+THRESHOLD=80   # % para disparar alerta
 
 
