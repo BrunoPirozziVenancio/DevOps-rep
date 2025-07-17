@@ -45,4 +45,22 @@ Como usar:
 PARTITION="/"  # Partição a monitorar  
 THRESHOLD=80   # % para disparar alerta
 
+4. `Monitor_ram.sh`  
+**Descrição**: Monitora uso de memória RAM e gera alertas  
+**Como usar**:  
+
+`./monitor_ram.sh`  
+
+**Configuração**:  
+
+-> Edite as variáveis no script:  
+
+LIMITE_ALERTA=90  # Alerta ao ultrapassar este % de uso  
+ARQUIVO_LOG="/caminho/do/seu/log.log"  # Local do arquivo de log  
+
+-> Exemplo com Cron (verificação a cada 30 minutos):  
+
+*/30 * * * * /caminho/scripts-bash/monitor_ram.sh
+
+
 
