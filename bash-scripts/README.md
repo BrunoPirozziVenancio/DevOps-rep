@@ -10,6 +10,12 @@ Coleção de scripts Bash úteis para administração de sistemas
 ```bash
 ./backup_com_timestamp.sh
 
+**Configuração:**
+Edite as variáveis no script:
+
+SOURCE="/caminho/para/backup"  # Diretório a ser backupeado
+DEST="/onde/salvar/backups"    # Pasta de destino
+
 
 
 
