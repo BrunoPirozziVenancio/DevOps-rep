@@ -17,5 +17,8 @@ SOURCE="/caminho/para/backup"  # Diretório a ser backupeado
 DEST="/onde/salvar/backups"    # Pasta de destino
 
 
+dadsadasd
+
+
 
 
