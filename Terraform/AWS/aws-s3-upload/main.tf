@@ -20,7 +20,7 @@ resource "aws_s3_bucket_public_access_block" "block_public" {
   restrict_public_buckets = false
 }
 
-# Permissão simples (opcional, se quiser deixar público)
+# Permissão simples (opcional, se quiser deixar público (em ambientes de teste é comum deixar público))
 
 resource "aws_s3_bucket_policy" "allow_uploads" {
   bucket = aws_s3_bucket.meu_bucket.id
