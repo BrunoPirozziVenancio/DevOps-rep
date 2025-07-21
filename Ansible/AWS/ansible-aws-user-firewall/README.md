@@ -1,4 +1,4 @@
-Segurança de Usuário e Firewall UFW
+# Segurança de Usuário e Firewall UFW
 
 Este playbook é uma junção dos **Projetos 3 - "ansible-aws-user-da--hardening" (segurança de acesso via SSH)** e **Projeto 3.1 - "ansible-aws-ufw" (configuração de firewall com UFW)**. Ele automatiza as **melhores práticas básicas de segurança** em uma instância EC2 na AWS utilizando o Ansible.
 
