@@ -35,5 +35,14 @@ terraform init
 terraform apply
 ```
 
+Importante: Confirme o email na sua caixa de entrada para ativar o SNS.  
+    
+4. Acesse os logs:
+
+Vá até CloudWatch → Logs → lambda_terraform
+
+---
+
+(Caso queira destruir o projeto, use `terraform destroy`)
 
 
