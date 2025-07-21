@@ -30,3 +30,10 @@ private_key_path = "~/.oci/oci_api_key.pem"
 region           = "sa-saopaulo-1"
 compartment_ocid = "ocid1.compartment.oc1..."
 ssh_public_key   = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ..."
+```
+Depois é só rodar:
+
+```bash
+terraform init
+terraform apply
+```
