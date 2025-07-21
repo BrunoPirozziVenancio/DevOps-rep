@@ -8,13 +8,13 @@ Cada pasta contém um projeto independente com código comentado, arquivos `.tf`
 
 ## Projetos incluídos
 
-### [`oci-instance-cloudinit`](./oci-instance-cloudinit)
+### .1 [`oci-instance-cloudinit`](./oci-instance-cloudinit)
 Criação de uma instância Compute com script **Cloud-Init**, que instala e configura pacotes automaticamente.  
 Perfeito para ambientes backend ou testes com serviços em Java, Git, Maven etc.
 
 ---
 
-### [`oci-loadbalancer-vms`](./oci-loadbalancer-vms)
+### 2. [`oci-loadbalancer-vms`](./oci-loadbalancer-vms)
 Arquitetura de alta disponibilidade:
 
 - 2 VMs na OCI
@@ -23,12 +23,12 @@ Arquitetura de alta disponibilidade:
 
 ---
 
-### [`oci-bucket`](./oci-bucket)
+### 3. [`oci-bucket`](./oci-bucket)
 Provisiona um **bucket no Object Storage** da OCI, ideal para armazenamento de arquivos, backups ou integrações com automações.
 
 ---
 
-### [`vcn-instance`](./vcn-instance)
+### 4. [`vcn-instance`](./vcn-instance)
 Projeto para criar uma **Virtual Cloud Network (VCN)** completa com:
 
 - Sub-redes públicas
