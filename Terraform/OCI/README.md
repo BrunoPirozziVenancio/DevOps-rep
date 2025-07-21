@@ -8,7 +8,7 @@ Cada pasta contém um projeto independente com código comentado, arquivos `.tf`
 
 ## Projetos incluídos
 
-### .1 [`oci-instance-cloudinit`](./oci-instance-cloudinit)
+###  .1 [`oci-instance-cloudinit`](./oci-instance-cloudinit)
 Criação de uma instância Compute com script **Cloud-Init**, que instala e configura pacotes automaticamente.  
 Perfeito para ambientes backend ou testes com serviços em Java, Git, Maven etc.
 
