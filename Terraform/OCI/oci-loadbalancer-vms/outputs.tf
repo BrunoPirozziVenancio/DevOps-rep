@@ -1,7 +1,7 @@
 # Mostra o IP público do Load Balancer após a criação
 
 output "load_balancer_public_ip" {
-  value       = oci_load_balancer_load_balancer.lb.ip_address_details[0].ip_address
+  value = oci_load_balancer_load_balancer.lb.ip_address_details[0].ip_address
   description = "IP público do Load Balancer"
 }
 
