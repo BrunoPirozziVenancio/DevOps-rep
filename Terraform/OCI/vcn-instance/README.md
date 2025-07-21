@@ -1,4 +1,4 @@
-# Terraform - OCI | VCN + Instância
+OCI | VCN + Instância
 
 Projeto criado pra automatizar a criação de uma estrutura base na Oracle Cloud:
 
