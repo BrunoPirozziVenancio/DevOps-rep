@@ -1,1 +1,7 @@
+# Arquivo com todas as tarefas de segurança e criação de usuários.
 
+# Cria um grupo chamado 'devops', usado para agrupar os usuários que terão acesso SSH
+- name: Criar grupo devops
+  group:
+    name: devops
+    state: present
