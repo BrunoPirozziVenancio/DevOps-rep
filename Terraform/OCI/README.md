@@ -1,68 +1,62 @@
 # Projetos Terraform com Oracle Cloud (OCI) — Portfólio DevOps
 
-Este repositório contém **projetos de infraestrutura como código (IaC)** usando **Terraform** na **Oracle Cloud Infrastructure (OCI)**. Os projetos são voltados para ambientes reais de desenvolvimento e produção, focando em automação, provisionamento e boas práticas de DevOps.
+Este repositório contém **projetos práticos com Terraform na Oracle Cloud Infrastructure (OCI)**. Os exemplos foram desenvolvidos com foco em automação, infraestrutura como código e ambientes reais de desenvolvimento e produção.
 
-Todos os códigos são comentados e organizados para facilitar entendimento e reuso.
+Cada pasta contém um projeto independente com código comentado, arquivos `.tf` e instruções em um `README.md` próprio.
 
 ---
 
 ## Projetos incluídos
 
-### 1. [Instância Compute com Cloud-Init](./oci-instance-cloud-init)
-
-Provisiona uma **instância virtual** na OCI e utiliza um script **Cloud-Init** para configurar o ambiente automaticamente.
-
-- Instala pacotes como Java, Git, Maven
-- Útil como base para backend, build server ou automações
-- Ideal para validar provisionamento automático
-
-Simula o setup inicial de um servidor de desenvolvimento.
+### [`oci-instance-cloudinit`](./oci-instance-cloudinit)
+Criação de uma instância Compute com script **Cloud-Init**, que instala e configura pacotes automaticamente.  
+Perfeito para ambientes backend ou testes com serviços em Java, Git, Maven etc.
 
 ---
 
-### 2. [Load Balancer com duas VMs](./oci-load-balancer)
+### [`oci-loadbalancer-vms`](./oci-loadbalancer-vms)
+Arquitetura de alta disponibilidade:
 
-Cria uma arquitetura com:
-
-- Duas **instâncias compute**
-- Um **Load Balancer público** na frente
-- Regras de segurança para HTTP/HTTPS
-- Instalação automática de servidor web (Apache) em ambas as VMs
-
-Resultado: Acesso via IP do Load Balancer alternando entre as instâncias.
+- 2 VMs na OCI
+- Load Balancer público distribuindo requisições
+- Apache instalado automaticamente com identificação de cada instância
 
 ---
 
-### 3. [Instância com projeto Java + Autonomous Database](./oci-java-autonomous-db)
-
-Simula um ambiente de desenvolvimento **Java + banco de dados gerenciado**:
-
-- Instância compute com Git, Java, Maven (via Cloud-Init)
-- Clonagem automática de repositório Java (ex: uma API)
-- Banco de dados **Autonomous Transaction Processing (ATP)**
-- Configurado para uso real com segurança e outputs úteis
-
-Ideal para DevOps que trabalham com backend, APIs e integração contínua.
+### [`oci-bucket`](./oci-bucket)
+Provisiona um **bucket no Object Storage** da OCI, ideal para armazenamento de arquivos, backups ou integrações com automações.
 
 ---
 
-## Tecnologias e conceitos aplicados
+### [`vcn-instance`](./vcn-instance)
+Projeto para criar uma **Virtual Cloud Network (VCN)** completa com:
 
-- **Terraform (Infraestrutura como Código)**
-- **Oracle Cloud Infrastructure (OCI)**
-- **Instâncias Compute**
-- **Cloud-Init**
-- **Load Balancer**
-- **Autonomous Database (ATP)**
-- **Scripts automatizados**
+- Sub-redes públicas
+- Internet Gateway
+- Route Tables
+- Security Lists
+
+Esse projeto serve de base para os outros e mostra como estruturar uma rede do zero na OCI.
 
 ---
 
-## Como testar
+## Tecnologias e práticas aplicadas
 
-Cada projeto tem um `README.md` próprio com instruções detalhadas.
+- Terraform
+- Oracle Cloud Infrastructure (OCI)
+- Compute Instances
+- VCN, Subnets e Security Lists
+- Load Balancer
+- Object Storage
+- Cloud-Init
+- Estrutura modular e reutilizável
 
-Passo comum para todos:
+---
+
+## Como executar
+
+Entre em qualquer pasta de projeto e execute:
+
 ```bash
 terraform init
 terraform apply
