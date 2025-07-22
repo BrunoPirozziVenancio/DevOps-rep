@@ -1,4 +1,4 @@
-# Projeto Ansible - Criação de Usuário com Chave SSH (OCI)
+# Criação de Usuário Seguro com Chave SSH (OCI)
 
 Este playbook do Ansible cria um usuário em uma VM da Oracle Cloud (OCI), configura acesso SSH com chave pública e (opcionalmente) adiciona o usuário ao sudo sem necessidade de senha. Ele também inclui um handler que reinicia o serviço SSH caso a configuração de sudoers seja alterada.
 
