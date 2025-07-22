@@ -1,4 +1,4 @@
-# Projeto Ansible OCI: Nginx com Hardening e Monitoramento (Fail2Ban)
+Nginx com Hardening e Monitoramento (Fail2Ban)
 
 Este playbook realiza a instalação e configuração do Nginx com proxy reverso para uma aplicação backend (como um app Node.js), aplicando práticas de **hardening** (segurança) e configurando o **Fail2Ban** para proteção contra tentativas de ataque (como brute force).
 
