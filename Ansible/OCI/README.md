@@ -1,13 +1,13 @@
-# 🚀 Projetos Ansible - Oracle Cloud Infrastructure (OCI)
+# Projetos Ansible - Oracle Cloud Infrastructure (OCI)
 
 Este diretório contém 6 projetos criados com Ansible para automação e provisionamento de ambientes na Oracle Cloud Infrastructure (OCI).  
 Os playbooks foram desenvolvidos com foco prático, compatíveis com VMs Ubuntu 22.04.5 LTS e Oracle Linux 9.6, usando autenticação por chave SSH.
 
 ---
 
-## 📦 Projetos
+## Projetos
 
-### 1. 🔐 `oci-create-user-ssh/`
+### 1. `oci-create-user-ssh/`
 Cria um novo usuário na VM com chave pública SSH e acesso sudo sem senha.
 
 **Principais tarefas:**
@@ -18,7 +18,7 @@ Cria um novo usuário na VM com chave pública SSH e acesso sudo sem senha.
 
 ---
 
-### 2. 📡 `oci-install-zabbix-agent/`
+### 2. `oci-install-zabbix-agent/`
 Instala e configura o agente Zabbix (6.4) para monitoramento remoto da instância.
 
 **Principais tarefas:**
@@ -29,7 +29,7 @@ Instala e configura o agente Zabbix (6.4) para monitoramento remoto da instânci
 
 ---
 
-### 3. 🔥 `oci-configure-firewall/`
+### 3. `oci-configure-firewall/`
 Configura o firewall da instância, detectando o sistema operacional automaticamente.
 
 **Ubuntu:** usa **UFW**  
@@ -42,7 +42,7 @@ Configura o firewall da instância, detectando o sistema operacional automaticam
 
 ---
 
-### 4. 🐳 `oci-install-docker/`
+### 4. `oci-install-docker/`
 Instala Docker e Docker Compose na instância, de forma simples e direta.
 
 **Principais tarefas:**
@@ -52,7 +52,7 @@ Instala Docker e Docker Compose na instância, de forma simples e direta.
 
 ---
 
-### 5. ⚙️ `oci-deploy-app-node/`
+### 5.  `oci-deploy-app-node/`
 Faz deploy de um app Node.js clonado de um repositório Git.
 
 **Fluxo:**
@@ -62,7 +62,7 @@ Faz deploy de um app Node.js clonado de um repositório Git.
 
 ---
 
-### 6. 🛡️ `oci-nginx-hardening-monitoring/`
+### 6.  `oci-nginx-hardening-monitoring/`
 Instala e configura o Nginx como proxy reverso com segurança reforçada e monitoração via Fail2Ban.
 
 **Inclui:**
@@ -73,7 +73,7 @@ Instala e configura o Nginx como proxy reverso com segurança reforçada e monit
 
 ---
 
-## ✅ Requisitos
+## Requisitos
 
 - Ansible 2.14+  
 - Acesso SSH com chave privada às VMs  
@@ -82,7 +82,7 @@ Instala e configura o Nginx como proxy reverso com segurança reforçada e monit
 
 ---
 
-## 💻 Como rodar
+## Como rodar
 
 ```bash
 ansible-playbook -i inventory.ini playbook.yml
