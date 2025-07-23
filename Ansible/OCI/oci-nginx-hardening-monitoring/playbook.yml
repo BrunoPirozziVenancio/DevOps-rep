@@ -1,10 +1,10 @@
 
 - name: Instalar Nginx com hardening + monitoring (fail2ban)
   hosts: oci                 # Define que o playbook será executado no grupo de hosts chamado 'oci'
-  become: true               # Garante que as tarefas serão executadas com privilégios de superusuário (sudo)
+  become: true                 # Garante que as tarefas serão executadas com privilégios de superusuário (sudo)
     
   vars:
-    app_backend_port: 5000      # Porta onde sua aplicação (ex: Node.js) está rodando localmente
+    app_backend_port: 5000          # Porta onde sua aplicação (ex: Node.js) está rodando localmente
     server_name: "_"            # Nome do servidor (pode ser domínio ou IP público)
 
   tasks:
@@ -62,7 +62,7 @@
               
               server_tokens off;
           }
-      notify: Reload Nginx  # Se o arquivo for alterado, será acionado o handler para recarregar o Nginx
+      notify: Reload Nginx          # Se o arquivo for alterado, será acionado o handler para recarregar o Nginx
 
     # Ativa o novo site e remove o padrão (Ubuntu específico)
     
@@ -114,6 +114,7 @@
         state: started
 
   handlers:
+  
     # Handler para recarregar o Nginx sempre que a configuração mudar
     
     - name: Reload Nginx
