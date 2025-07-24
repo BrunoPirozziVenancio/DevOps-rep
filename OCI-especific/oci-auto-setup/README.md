@@ -20,7 +20,7 @@ Este projeto automatiza a criação de uma instância na Oracle Cloud Infrastruc
 ### 1. Clone o projeto
 
 ```bash
-git clone https://github.com/seu-usuario/oci-auto-setup.git
+git clone https://github.com/BrunoPirozziVenancio/DevOps-rep/OCI-especific/oci-auto-setup.git
 cd oci-auto-setup
 ```
 
