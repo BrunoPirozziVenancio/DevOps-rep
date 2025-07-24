@@ -24,15 +24,15 @@ runcmd:
   - echo "[INFO] Instalando Java 22"            # Mensagem informativa no log
   - wget https://download.oracle.com/java/22/latest/jdk-22_linux-x64_bin.deb -O /tmp/jdk22.deb          # Download do JDK
   - apt install -y /tmp/jdk22.deb              # Instalação do pacote baixado
-  - java -version                            # Verifica a versão instalada do Java
+  - java -version                          
 
 
   # Configuração do Nginx
   - echo "[INFO] Habilitando e iniciando Nginx"
-  - systemctl enable nginx            # Habilita o Nginx para iniciar automaticamente no boot
+  - systemctl enable nginx            # Para iniciar automaticamente no boot
   - systemctl start nginx             
 
   # Configuração do MySQL
   - echo "[INFO] Habilitando e iniciando MySQL"
-  - systemctl enable mysql            # Habilita o MySQL para iniciar automaticamente no boot
+  - systemctl enable mysql            # Para iniciar automaticamente no boot
   - systemctl start mysql  
