@@ -1,0 +1,42 @@
+# Nome do workflow do GitHub Actions para deploy de Docker
+name: Docker Deploy
+
+# Define os eventos que disparam a execução deste workflow
+on:
+  push:  # Aciona quando há um push para o repositório
+    branches: [ main ]  # Só executa se o push for para a branch main
+    paths:  # Filtra por caminhos modificados
+      - 'docker/**'  # Monitora qualquer alteração dentro da pasta docker e subpastas
+
+# Jobs que compõem este workflow
+jobs:
+  # Nome do job principal
+  docker-build-push:
+    # Configura o ambiente de execução (última versão do Ubuntu)
+    runs-on: ubuntu-latest
+
+    # Passos sequenciais que serão executados neste job
+    steps:
+      # Primeiro passo: baixar o código do repositório
+      - name: Checkout código
+        uses: actions/checkout@v4  # Usa a ação oficial de checkout na versão 4
+
+      # Segundo passo: autenticação no Docker Hub
+      - name: Login no DockerHub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        # Explicação do comando:
+        # - Usa credenciais armazenadas nos secrets do GitHub
+        # - echo imprime a senha e pipe (|) envia para o comando docker login
+        # - --password-stdin lê a senha da entrada padrão (mais seguro)
+
+      # Terceiro passo: construção da imagem Docker
+      - name: Build da imagem
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/meu-app:latest ./docker/app-node-mysql
+        # Explicação dos parâmetros:
+        # - -t: define a tag/nome da imagem (usando o nome de usuário do Docker Hub)
+        # - ./docker/app-node-mysql: caminho para o Dockerfile e contexto de build
+
+      # Quarto passo: envio da imagem para o Docker Hub
+      - name: Push da imagem
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/meu-app:latest
+        # Envia a imagem construída para o repositório no Docker Hub
