@@ -6,7 +6,7 @@ pipeline {
     // Define variáveis de ambiente que serão usadas na pipeline
     environment {
         TF_DIR = 'infra-as-code/Terraform/OCI'       // Caminho para os arquivos Terraform, no caso tem que mudar para o arquivo que tem o .tf (Ex.: infra-as-code/Terraform/OCI/oci-instance-cloudinit)
-        ANSIBLE_DIR = 'infra-as-code/Ansible/OCI'    // Caminho para os arquivos Ansible, no caso tem que mudar para o arquivo que tem o 
+        ANSIBLE_DIR = 'infra-as-code/Ansible/OCI'    // Caminho para os arquivos Ansible, no caso tem que mudar para o arquivo que quer que rode (Ex.: infra-as-code/Ansible/OCI/oci-install-zabbix-agent)
     }
 
     // Define os estágios da pipeline (etapas sequenciais)
@@ -74,11 +74,11 @@ pipeline {
     post {
         // Executa apenas se a pipeline falhar
         failure {
-            echo 'Algo deu errado 😞'  // Mensagem de erro amigável
+            echo 'Algo deu errado!!'  // Mensagem de erro
         }
         // Executa apenas se a pipeline for bem sucedida
         success {
-            echo 'Pipeline executada com sucesso! 🚀'  // Mensagem de sucesso
+            echo 'Pipeline executada com sucesso!!!'  // Mensagem de sucesso
         }
     }
 }
