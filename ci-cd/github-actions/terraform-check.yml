@@ -1,0 +1,48 @@
+# Nome do workflow do GitHub Actions
+name: Terraform Validation
+
+# Define quando o workflow será acionado
+on:
+  # Aciona quando há um push (envio de código) para o repositório
+  push:
+    # Só aciona se as alterações forem nos caminhos especificados
+    paths:
+      - 'infra-as-code/Terraform/**'  # Monitora qualquer arquivo dentro desta pasta e subpastas
+  # Também aciona quando há uma pull request (solicitação de merge)
+  pull_request:
+    paths:
+      - 'infra-as-code/Terraform/**'  # Mesma condição de caminho para PRs
+
+# Jobs que serão executados
+jobs:
+  # Nome do job (pode ter vários jobs em um workflow)
+  terraform-validate:
+    # Configura o ambiente de execução (neste caso, a versão mais recente do Ubuntu)
+    runs-on: ubuntu-latest
+
+    # Lista de passos que serão executados sequencialmente neste job
+    steps:
+      # Primeiro passo: baixar o código do repositório
+      - name: Checkout código  # Nome descritivo do passo
+        uses: actions/checkout@v4  # Usa a ação oficial de checkout na versão 4
+
+      # Segundo passo: instalar o Terraform
+      - name: Instalar Terraform
+        uses: hashicorp/setup-terraform@v3  # Usa a ação oficial da HashiCorp para instalar Terraform
+
+      # Terceiro passo: inicializar o diretório do Terraform
+      - name: Inicializar Terraform
+        run: terraform init  # Comando para inicializar o Terraform (baixa providers, módulos, etc.)
+        working-directory: infra-as-code/Terraform  # Especifica o diretório onde o comando será executado
+
+      # Quarto passo: verificar a formatação do código
+      - name: Verificar sintaxe (fmt)
+        run: terraform fmt -check -recursive  # Verifica se o código está formatado corretamente
+                                              # -check: modo de verificação (não altera os arquivos)
+                                              # -recursive: verifica todas as subpastas
+        working-directory: infra-as-code/Terraform
+
+      # Quinto passo: validar a sintaxe e configuração do Terraform
+      - name: Validar Terraform
+        run: terraform validate  # Comando que valida a sintaxe e configurações do Terraform
+        working-directory: infra-as-code/Terraform
