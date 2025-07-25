@@ -1,0 +1,84 @@
+// Define uma pipeline Jenkins usando a sintaxe declarativa
+pipeline {
+    // Especifica que pode rodar em qualquer agente disponível
+    agent any
+
+    // Define variáveis de ambiente que serão usadas na pipeline
+    environment {
+        TF_DIR = 'infra-as-code/Terraform/OCI'       // Caminho para os arquivos Terraform
+        ANSIBLE_DIR = 'infra-as-code/Ansible/OCI'    // Caminho para os arquivos Ansible
+    }
+
+    // Define os estágios da pipeline (etapas sequenciais)
+    stages {
+        // Primeiro estágio: Obter o código fonte do repositório
+        stage('Checkout') {
+            steps {
+                checkout scm  // Comando padrão do Jenkins para fazer checkout do código
+            }
+        }
+
+        // Segundo estágio: Inicializar o Terraform
+        stage('Terraform Init') {
+            steps {
+                dir("${TF_DIR}") {  // Entra no diretório do Terraform
+                    sh 'terraform init'  // Executa o comando de inicialização
+                }
+            }
+        }
+
+        // Terceiro estágio: Validar a configuração do Terraform
+        stage('Terraform Validate') {
+            steps {
+                dir("${TF_DIR}") {
+                    sh 'terraform validate'  // Valida a sintaxe e configurações
+                }
+            }
+        }
+
+        // Quarto estágio: Gerar um plano de execução do Terraform
+        stage('Terraform Plan') {
+            steps {
+                dir("${TF_DIR}") {
+                    // Cria um plano de execução e salva em um arquivo chamado tfplan
+                    sh 'terraform plan -out=tfplan'
+                }
+            }
+        }
+
+        // Quinto estágio: Aplicar as mudanças do Terraform (apenas na branch main)
+        stage('Terraform Apply') {
+            when {  // Condição para executar este estágio
+                branch 'main'  // Só executa se estiver na branch main
+            }
+            steps {
+                dir("${TF_DIR}") {
+                    // Aplica automaticamente o plano gerado anteriormente
+                    sh 'terraform apply -auto-approve tfplan'
+                }
+            }
+        }
+
+        // Sexto estágio: Executar o playbook Ansible
+        stage('Ansible Deploy') {
+            steps {
+                dir("${ANSIBLE_DIR}") {  // Entra no diretório do Ansible
+                    // Executa o playbook chamado deploy.yml usando o arquivo hosts como inventário
+                    sh 'ansible-playbook -i hosts deploy.yml'
+                }
+            }
+        }
+    }
+
+    // Bloco que define ações pós-execução (executadas independente do resultado)
+    post {
+        // Executa apenas se a pipeline falhar
+        failure {
+            echo 'Algo deu errado 😞'  // Mensagem de erro amigável
+        }
+        // Executa apenas se a pipeline for bem sucedida
+        success {
+            echo 'Pipeline executada com sucesso! 🚀'  // Mensagem de sucesso
+        }
+    }
+}
