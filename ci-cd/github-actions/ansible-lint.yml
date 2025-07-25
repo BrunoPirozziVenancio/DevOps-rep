@@ -1,0 +1,37 @@
+# Nome do workflow do GitHub Actions para validação de Ansible
+name: Ansible Lint
+
+# Define os eventos que disparam a execução deste workflow
+on:
+  # Aciona quando há um push para o repositório
+  push:
+    # Filtra para executar apenas quando há mudanças em:
+    paths:
+      - 'infra-as-code/Ansible/**'  # Qualquer arquivo dentro desta pasta e subpastas
+  # Também aciona em pull requests
+  pull_request:
+    paths:
+      - 'infra-as-code/Ansible/**'  # Mesmo filtro de caminho para PRs
+
+# Jobs que compõem este workflow
+jobs:
+  # Nome do job principal (pode ter múltiplos jobs)
+  ansible-lint:
+    # Configura o ambiente de execução (última versão do Ubuntu)
+    runs-on: ubuntu-latest
+
+    # Passos sequenciais que serão executados neste job
+    steps:
+      # Primeiro passo: baixar o código do repositório
+      - name: Checkout código  # Nome descritivo do passo
+        uses: actions/checkout@v4  # Usa a ação oficial de checkout na versão 4
+
+      # Segundo passo: instalar as dependências necessárias
+      - name: Instalar dependências
+        run: |  # Executa múltiplos comandos em sequência
+          sudo apt update &&  # Atualiza a lista de pacotes
+          sudo apt install -y ansible ansible-lint  # Instala o Ansible e o linter
+
+      # Terceiro passo: executar o ansible-lint para validar o código
+      - name: Rodar ansible-lint
+        run: ansible-lint infra-as-code/Ansible  # Executa o linter no diretório especificado
