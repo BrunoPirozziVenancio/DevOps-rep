@@ -5,8 +5,8 @@ pipeline {
 
     // Define variáveis de ambiente que serão usadas na pipeline
     environment {
-        TF_DIR = 'infra-as-code/Terraform/OCI'       // Caminho para os arquivos Terraform
-        ANSIBLE_DIR = 'infra-as-code/Ansible/OCI'    // Caminho para os arquivos Ansible
+        TF_DIR = 'infra-as-code/Terraform/OCI'       // Caminho para os arquivos Terraform, no caso tem que mudar para o arquivo que tem o .tf (Ex.: infra-as-code/Terraform/OCI/oci-instance-cloudinit)
+        ANSIBLE_DIR = 'infra-as-code/Ansible/OCI'    // Caminho para os arquivos Ansible, no caso tem que mudar para o arquivo que tem o 
     }
 
     // Define os estágios da pipeline (etapas sequenciais)
